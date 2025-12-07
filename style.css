@@ -135,24 +135,38 @@ p {
 }
 
 /* ------------------ Right 3D Visual ------------------ */
-.hero-visual {
+/* .hero-visual {
     position: relative;
     width: 480px;
     height: 420px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 /* 3D Canvas */
-#three-container {
+/* #three-container {
     width: 100%;
     height: 100%;
     border-radius: 22px;
     overflow: hidden;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(12px);
+} */
+
+#three-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
+.hero-visual {
+    width: 50%;
+    height: 100vh;
+    position: relative;
+}
+
 
 /* ------------------ Floating Glow Elements ------------------ */
 .floating-gradient {
@@ -257,6 +271,122 @@ p {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
+
+/* ================= TIMELINE =================
+/* ===== Timeline Container ===== */
+.timeline-section {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: #0f0f10;
+  padding: 0;
+}
+
+/* Horizontal items */
+.timeline-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 200px;
+  padding-left: 10vw;
+  height: 100vh;
+  position: relative;
+  will-change: transform;
+}
+
+/* Timeline line */
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  width: 300%;
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-50%);
+}
+
+/* Moving Circle */
+.timeline-progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  transform: translateY(-50%);
+  background: #ff2ea6;
+  border-radius: 50%;
+  box-shadow: 0 0 18px #ff2ea6;
+  z-index: 10;
+}
+
+/* ===== Timeline Cards ===== */
+.timeline-item {
+  min-width: 350px;
+  position: relative;
+}
+
+.timeline-item.top {
+  margin-top: -120px;
+}
+.timeline-item.bottom {
+  margin-top: 120px;
+}
+
+.timeline-card {
+  padding: 25px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  will-change: transform;
+}
+
+/* 3D Tilt Hover */
+.timeline-card:hover {
+  transform: perspective(600px) rotateY(8deg) rotateX(8deg) scale(1.03);
+  box-shadow: 0 15px 30px rgba(255, 46, 166, 0.3);
+}
+
+.timeline-card h3 {
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.timeline-card p {
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 900px) {
+  .timeline-section {
+    height: auto;
+    overflow: visible;
+    padding: 80px 20px;
+  }
+
+  .timeline-wrapper {
+    flex-direction: column;
+    gap: 80px;
+    height: auto;
+    padding: 0;
+  }
+
+  .timeline-line,
+  .timeline-progress {
+    display: none;
+  }
+
+  .timeline-item.top,
+  .timeline-item.bottom {
+    margin-top: 0;
+  }
+} 
+
 
 /* ================= PROJECTS ================= */
 .project-grid {
